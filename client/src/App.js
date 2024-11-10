@@ -9,6 +9,7 @@ import Goals from "./Components/Goals/Goals";
 import Investments from "./Components/Investments/Investments";
 import SipCalculator from "./Components/sip/SipCalculator";
 import Dashboard from "./Components/Dashboard/Dashboard";
+import SignOut from "./Components/SignOut/SignOut";
 
 export default function App() {
   const [login, setLogin] = useState(false);
@@ -32,6 +33,7 @@ export default function App() {
         {!login ? (
           <Routes>
             <Route path="/*" element={<AuthPage />} />
+            <Route path="/login" element={<AuthPage />} />
           </Routes>
         ) : (
           <>
@@ -42,6 +44,9 @@ export default function App() {
               <Route path="/goals" element={<Goals />} />
               <Route path="/investments" element={<Investments />} />
               <Route path="/sip" element={<SipCalculator />} />
+              {/* Map multiple routes to the SignOut component */}
+              <Route path="/signout" element={<SignOut />} />
+              <Route path="/*" element={<SignOut />} /> {/* Catch-all route */}
             </Routes>
           </>
         )}

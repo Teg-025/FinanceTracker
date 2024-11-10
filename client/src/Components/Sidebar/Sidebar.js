@@ -4,6 +4,7 @@ import { TbArcheryArrow } from "react-icons/tb";
 import { BiCoinStack } from "react-icons/bi";
 import { FaDollarSign } from "react-icons/fa";
 import { FaChartLine } from "react-icons/fa6";
+import { IoMdExit } from "react-icons/io";
 import { Link } from "react-router-dom";
 import "./Sidebar.css"
 
@@ -42,6 +43,10 @@ const Sidebar = () => {
           <Link to={"/sip"} className="flex space-x-3 dashboard-entry">
             <BiCoinStack className="dashboard-icon" />
             <span className="dashboard-text">SIP calculator</span>
+          </Link>
+          <Link to={"/signout"} className="flex space-x-3 dashboard-entry">
+            <IoMdExit className="dashboard-icon" />
+            <span className="dashboard-text">Signout</span>
           </Link>
         </div>
       </aside>
