@@ -23,7 +23,7 @@ export default function App() {
       setLogin(false);
       navigate("/"); 
     }
-  }, [navigate, login]);
+  }, [login]);
 
   return (
     <>

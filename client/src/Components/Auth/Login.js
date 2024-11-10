@@ -28,6 +28,7 @@ const Login = () => {
 
       navigate("/dashboard");
       setLogin(true);
+      success("happened");
       console.log(userData); // Example of handling the returned data
     } catch (error) {
       failure("Login failed. Please check your credentials.");

@@ -153,7 +153,7 @@ const Dashboard = () => {
                     className="hover:bg-gray-700 transition-colors duration-200"
                   >
                     <td className="p-4">{formatDate(investment.date)}</td>
-                    <td className="p-4">{investment.type}</td>
+                    <td className="p-4">{investment.investmentType}</td>
                     <td className="p-4">{investment.amount}</td>
                     <td className="p-4">{investment.description}</td>
                   </tr>

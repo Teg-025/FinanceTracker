@@ -174,14 +174,14 @@ const Expenses = () => {
       </div>
 
       <div className="w-full flex items-center justify-end space-x-4 py-3 px-0">
-        <button
+        {/* <button
           onClick={() => {
             setIsCModalOpen(true);
           }}
           className="bg-yellow-500 text-white font-bold rounded-lg py-2 px-3"
         >
           Add Category
-        </button>
+        </button> */}
         <button
           onClick={() => {
             setIsModalOpen(true);

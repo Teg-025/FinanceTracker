@@ -36,7 +36,7 @@ const SipCalculator = () => {
   };
 
   const handleCalculate = (e) => {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault();
     calculateSIP();
   };
 
@@ -137,8 +137,16 @@ const SipCalculator = () => {
                   angle: -90,
                   position: "insideLeft",
                   fill: "#ffffff",
+                  fontSize: 18,
+                  dy: 40, // Adjust this value to move the label vertically
                 }}
                 stroke="#ffffff"
+                tick={{ fontSize: 12, fill: "#ffffff" }}
+                tickFormatter={(value) => {
+                  if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(1)}M`;
+                  if (value >= 1_000) return `${(value / 1_000).toFixed(1)}K`;
+                  return value.toFixed(0);
+                }}
               />
               <Tooltip
                 contentStyle={{ backgroundColor: "#4B5563", border: "none" }}
