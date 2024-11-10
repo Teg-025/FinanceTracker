@@ -1,52 +1,49 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useEffect, useState } from "react";
-import AuthPage from "./Components/Auth/AuthPage";
+import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import AuthPage from "./Components/Auth/AuthPage"; // Import AuthPage
 import Sidebar from "./Components/Sidebar/Sidebar";
+import Dashboard from "./Components/Dashboard/Dashboard";
 import Expenses from "./Components/Expenses/Expenses";
 import Goals from "./Components/Goals/Goals";
 import Investments from "./Components/Investments/Investments";
 import SipCalculator from "./Components/sip/SipCalculator";
-import Dashboard from "./Components/Dashboard/Dashboard";
 import SignOut from "./Components/SignOut/SignOut";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App() {
-  const [login, setLogin] = useState(false);
+  const [loginState, setLoginState] = useState(false);  // Manage login state here
   const navigate = useNavigate();
 
   useEffect(() => {
     const authToken = localStorage.getItem("authToken");
     if (authToken) {
-      setLogin(true);
-      navigate("/dashboard"); 
+      setLoginState(true);
     } else {
-      setLogin(false);
-      navigate("/"); 
+      setLoginState(false);
     }
-  }, [login]);
+  }, []);
 
   return (
     <>
       <ToastContainer />
       <div className="h-screen flex w-full">
-        {!login ? (
+        {!loginState ? (
           <Routes>
-            <Route path="/*" element={<AuthPage />} />
-            <Route path="/login" element={<AuthPage />} />
+            <Route path="/" element={<AuthPage setLoginState={setLoginState} />} />
+            <Route path="/login" element={<AuthPage setLoginState={setLoginState} />} />
           </Routes>
         ) : (
           <>
             <Sidebar />
             <Routes>
+            <Route path="/" element={<Dashboard />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/expenses" element={<Expenses />} />
               <Route path="/goals" element={<Goals />} />
               <Route path="/investments" element={<Investments />} />
               <Route path="/sip" element={<SipCalculator />} />
-              {/* Map multiple routes to the SignOut component */}
-              <Route path="/signout" element={<SignOut />} />
-              <Route path="/*" element={<SignOut />} /> {/* Catch-all route */}
+              <Route path="/signout" element={<SignOut setLoginState={setLoginState} />} />
             </Routes>
           </>
         )}

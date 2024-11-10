@@ -79,7 +79,7 @@ export const deleteExpense = async (id) => {
 };
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/api", // Adjust your base URL accordingly
+  baseURL: "https://financetracker-scik.onrender.com/api", // Adjust your base URL accordingly
   headers: {
     "authToken": localStorage.getItem("authToken"), // Or however you manage your token
   },
